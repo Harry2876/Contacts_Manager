@@ -4,6 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+        <variable
+            name="contact"
+            type="com.example.contactsmanager.Contacts" />
 
     </data>
 
@@ -17,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif"
-            android:text="Name"
+            android:text="@{contact.name}"
             android:textColor="@color/black"
             android:textSize="25sp"
             android:textStyle="bold"
@@ -32,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="sans-serif"
-            android:text="Number"
+            android:text="@{contact.number}"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
