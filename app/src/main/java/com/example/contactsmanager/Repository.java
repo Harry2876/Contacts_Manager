@@ -1,7 +1,10 @@
 package com.example.contactsmanager;
 
+import android.app.Application;
 import android.os.Handler;
 import android.os.Looper;
+
+import androidx.lifecycle.LiveData;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -17,8 +20,11 @@ public class Repository {
     Handler handler;
 
 
-    public Repository(ContactDAO contactDAO) {
-        this.contactDAO = contactDAO;
+    public Repository(Application application) {
+
+        //Connect database and DAO in Repository
+        ContactsDatabase contactsDatabase = ContactsDatabase.getInstance(application);
+        this.contactDAO = contactsDatabase.getContactDAO();
 
         //Used for background database operations
         executor = Executors.newSingleThreadExecutor();
@@ -49,7 +55,7 @@ public class Repository {
         });
     }
 
-    public List<Contacts> getAllContacts(){
+    public LiveData<List<Contacts>> getAllContacts(){
         return contactDAO.getAllContacts();
     }
 
