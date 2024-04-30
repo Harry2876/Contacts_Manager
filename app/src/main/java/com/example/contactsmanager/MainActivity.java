@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         AppViewModel viewModel = new ViewModelProvider(this).get(AppViewModel.class);
 
         //Inserting a contact for testing
-        Contacts c1 = new Contacts(1,
+        Contacts c1 = new Contacts(
                 "User",
                 "1234567890");
 

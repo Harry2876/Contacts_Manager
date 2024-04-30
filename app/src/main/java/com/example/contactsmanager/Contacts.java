@@ -20,8 +20,7 @@ public class Contacts {
     private String number;
 
     //Creating 2 constructor one having all thing and empty to avoid null pointer exception
-    public Contacts(int id, String name, String number) {
-        this.id = id;
+    public Contacts( String name, String number) {
         this.name = name;
         this.number = number;
     }
