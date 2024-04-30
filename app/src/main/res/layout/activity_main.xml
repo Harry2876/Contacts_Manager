@@ -41,11 +41,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textview" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:onClick="@{clickHandler.onFABClicked()}"
             android:id="@+id/addcontactbtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="76dp"
+            android:onClick="@{clickHandler::onFABClicked}"
+            android:src="@android:drawable/ic_input_add"
+            app:backgroundTint="#FFB3C6"
             app:layout_constraintBottom_toBottomOf="@+id/recyclerview"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.864"

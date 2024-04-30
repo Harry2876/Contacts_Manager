@@ -54,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
 
-        //Adapters
-        rAdapter = new Radapter(contacts);
-
         //DataBase
         contactsDatabase = ContactsDatabase.getInstance(this);
 
@@ -72,11 +69,18 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllContacts().observe(this, new Observer<List<Contacts>>() {
             @Override
             public void onChanged(List<Contacts> contacts) {
+                contacts.clear();
                 for( Contacts c: contacts){
                     Log.v("TAGY",c.getName());
+                    contacts.add(c);
                 }
+
+                rAdapter.notifyDataSetChanged();
             }
         });
+
+        //Adapters
+        rAdapter = new Radapter(contacts);
 
         //Linking recycler view with the adapter
         recyclerView.setAdapter(rAdapter);
