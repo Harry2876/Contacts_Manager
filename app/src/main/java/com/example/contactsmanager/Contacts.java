@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.math.BigInteger;
+
 @Entity(tableName = "contacts_table")
 public class Contacts {
 
@@ -15,10 +17,10 @@ public class Contacts {
     private String name;
 
     @ColumnInfo(name = "contacts_number")
-    private int number;
+    private String number;
 
     //Creating 2 constructor one having all thing and empty to avoid null pointer exception
-    public Contacts(int id, String name, int number) {
+    public Contacts(int id, String name, String number) {
         this.id = id;
         this.name = name;
         this.number = number;
@@ -45,11 +47,11 @@ public class Contacts {
         this.name = name;
     }
 
-    public int getNumber() {
+    public String  getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 }
