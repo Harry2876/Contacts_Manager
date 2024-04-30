@@ -5,14 +5,19 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.lifecycle.ViewModel;
+
 public class AddNewContactClickHandler {
 
     Contacts contact;
     Context context;
 
-    public AddNewContactClickHandler(Contacts contact, Context context) {
+    AppViewModel viewModel;
+
+    public AddNewContactClickHandler(Contacts contact, Context context,AppViewModel viewModel) {
         this.contact = contact;
         this.context = context;
+        this.viewModel = viewModel;
     }
 
     public void onSubmitButtonClicked(View view){
@@ -20,8 +25,12 @@ public class AddNewContactClickHandler {
             Toast.makeText(context, "Fields Can't be Empty", Toast.LENGTH_SHORT).show();
         }else {
             Intent i = new Intent(context, MainActivity.class);
-            i.putExtra("Name",contact.getName());
-            i.putExtra("Number", contact.getName());
+            Contacts c = new Contacts(
+                    contact.getName(),
+                    contact.getNumber()
+            );
+            viewModel.addNewContact(c);
+
             context.startActivity(i);
 
         }
